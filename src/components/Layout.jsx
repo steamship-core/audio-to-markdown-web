@@ -3,16 +3,8 @@ import Image from 'next/future/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
-import { AudioPlayer } from '@/components/player/AudioPlayer'
-import posterImage from '@/images/poster.png'
+import posterImage from '@/images/steamship-symbol-dark.png'
 
-function randomBetween(min, max, seed = 1) {
-  return () => {
-    let rand = Math.sin(seed++) * 10000
-    rand = rand - Math.floor(rand)
-    return Math.floor(rand * (max - min + 1) + min)
-  }
-}
 
 function Waveform(props) {
   let id = useId()
@@ -153,11 +145,7 @@ function AboutSection(props) {
           !isExpanded && 'lg:line-clamp-4'
         )}
       >
-        In this show, Eric and Wes dig deep to get to the facts with guests who
-        have been labeled villains by a society quick to judge, without actually
-        getting the full story. Tune in every Thursday to get to the truth with
-        another misunderstood outcast as they share the missing context in their
-        tragic tale.
+        A fun day-long-hack inspired by <a className="underline" href="https://twitter.com/chrisalbon/status/1582143382482128896?s=20&t=NlzctSTGUUbAAE9z1Y6c7g" target="_blank">this tweet</a>  about wanting an API that turns audio into Markdown text. 
       </p>
       {!isExpanded && (
         <button
@@ -181,16 +169,7 @@ export function Layout({ children }) {
         <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
           <span className="font-mono text-slate-500">Hosted by</span>
           <span className="mt-6 flex gap-6 font-bold text-slate-900">
-            {hosts.map((host, hostIndex) => (
-              <Fragment key={host}>
-                {hostIndex !== 0 && (
-                  <span aria-hidden="true" className="text-slate-400">
-                    /
-                  </span>
-                )}
-                {host}
-              </Fragment>
-            ))}
+            <a target="_blank" href="https://www.steamship.com/team">the fun folks at Steamship</a>
           </span>
         </div>
         <div className="relative z-10 mx-auto px-4 pb-4 pt-10 sm:px-6 md:max-w-2xl md:px-4 lg:min-h-full lg:flex-auto lg:border-x lg:border-slate-200 lg:py-12 lg:px-8 xl:px-12">
@@ -210,11 +189,10 @@ export function Layout({ children }) {
           </Link>
           <div className="mt-10 text-center lg:mt-12 lg:text-left">
             <p className="text-xl font-bold text-slate-900">
-              <Link href="/">Their Side</Link>
+              <Link href="/">audio-to-markdown</Link>
             </p>
             <p className="mt-3 text-lg font-medium leading-8 text-slate-700">
-              Conversations with the most tragically misunderstood people of our
-              time.
+              Turn audio into Markdown text with <a className="underline" href="https://openai.com/blog/whisper/">Whisper</a> and <a className="underline" href="https://www.steamship.com">Steamship</a>.
             </p>
           </div>
           <AboutSection className="mt-12 hidden lg:block" />
@@ -224,7 +202,7 @@ export function Layout({ children }) {
                 colors={['fill-indigo-300', 'fill-blue-300']}
                 className="h-2.5 w-2.5"
               />
-              <span className="ml-2.5">Listen</span>
+              <span className="ml-2.5">Links</span>
             </h2>
             <div className="h-px bg-gradient-to-r from-slate-200/0 via-slate-200 to-slate-200/0 lg:hidden" />
             <ul
@@ -232,14 +210,14 @@ export function Layout({ children }) {
               className="mt-4 flex justify-center gap-10 text-base font-medium leading-7 text-slate-700 sm:gap-8 lg:flex-col lg:gap-4"
             >
               {[
-                ['Spotify', SpotifyIcon],
-                ['Apple Podcast', ApplePodcastIcon],
-                ['Overcast', OvercastIcon],
-                ['RSS Feed', RSSIcon],
-              ].map(([label, Icon]) => (
+                ['Github', OvercastIcon, "https://www.github.com/steamship-packages/audio-markdown"],
+                ['Steamship', RSSIcon, "https://www.steamship.com"],
+                ['@GetSteamship´', RSSIcon, "https://www.twitter.com/GetSteamship"],
+              ].map(([label, Icon, link]) => (
                 <li key={label} className="flex">
                   <Link
-                    href="/"
+                    href={link}
+                    target="_blank"
                     className="group flex items-center"
                     aria-label={label}
                   >
@@ -253,7 +231,6 @@ export function Layout({ children }) {
         </div>
       </header>
       <main className="border-t border-slate-200 lg:relative lg:mb-28 lg:ml-112 lg:border-t-0 xl:ml-120">
-        <Waveform className="absolute left-0 top-0 h-20 w-full" />
         <div className="relative">{children}</div>
       </main>
       <footer className="border-t border-slate-200 bg-slate-50 py-10 pb-40 sm:py-16 sm:pb-32 lg:hidden">
@@ -277,9 +254,6 @@ export function Layout({ children }) {
           </div>
         </div>
       </footer>
-      <div className="fixed inset-x-0 bottom-0 z-10 lg:left-112 xl:left-120">
-        <AudioPlayer />
-      </div>
     </>
   )
 }
