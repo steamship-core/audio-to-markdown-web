@@ -145,7 +145,7 @@ function AboutSection(props) {
           !isExpanded && 'lg:line-clamp-4'
         )}
       >
-        A fun day-long-hack inspired by <a className="underline" href="https://twitter.com/chrisalbon/status/1582143382482128896?s=20&t=NlzctSTGUUbAAE9z1Y6c7g" target="_blank">this tweet</a>  about wanting an API that turns audio into Markdown text. 
+        A fun day-long-hack inspired by <a className="underline" href="https://twitter.com/chrisalbon/status/1582143382482128896?s=20&t=NlzctSTGUUbAAE9z1Y6c7g" rel="noreferrer"  ">this tweet</a>  about wanting an API that turns audio into Markdown text. 
       </p>
       {!isExpanded && (
         <button
@@ -169,7 +169,7 @@ export function Layout({ children }) {
         <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
           <span className="font-mono text-slate-500">Hosted by</span>
           <span className="mt-6 flex gap-6 font-bold text-slate-900">
-            <a target="_blank" href="https://www.steamship.com/team">the fun folks at Steamship</a>
+            <a target="_blank" rel="noreferrer"  href="https://www.steamship.com/team">the fun folks at Steamship</a>
           </span>
         </div>
         <div className="relative z-10 mx-auto px-4 pb-4 pt-10 sm:px-6 md:max-w-2xl md:px-4 lg:min-h-full lg:flex-auto lg:border-x lg:border-slate-200 lg:py-12 lg:px-8 xl:px-12">
@@ -218,6 +218,7 @@ export function Layout({ children }) {
                   <Link
                     href={link}
                     target="_blank"
+                    rel="noreferrer" 
                     className="group flex items-center"
                     aria-label={label}
                   >
