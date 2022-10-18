@@ -145,7 +145,7 @@ function AboutSection(props) {
           !isExpanded && 'lg:line-clamp-4'
         )}
       >
-        A fun day-long-hack inspired by <a className="underline" href="https://twitter.com/chrisalbon/status/1582143382482128896?s=20&t=NlzctSTGUUbAAE9z1Y6c7g" rel="noreferrer"  ">this tweet</a>  about wanting an API that turns audio into Markdown text. 
+        A fun day-long-hack inspired by <a className="underline" href="https://twitter.com/chrisalbon/status/1582143382482128896?s=20&t=NlzctSTGUUbAAE9z1Y6c7g" rel="noreferrer">this tweet</a>  about wanting an API that turns audio into Markdown text. 
       </p>
       {!isExpanded && (
         <button
@@ -242,16 +242,7 @@ export function Layout({ children }) {
             <span className="ml-2.5">Hosted by</span>
           </h2>
           <div className="mt-2 flex gap-6 text-sm font-bold leading-7 text-slate-900">
-            {hosts.map((host, hostIndex) => (
-              <Fragment key={host}>
-                {hostIndex !== 0 && (
-                  <span aria-hidden="true" className="text-slate-400">
-                    /
-                  </span>
-                )}
-                {host}
-              </Fragment>
-            ))}
+            <a target="_blank" rel="noreferrer"  href="https://www.steamship.com/team">the fun folks at Steamship</a>
           </div>
         </div>
       </footer>
