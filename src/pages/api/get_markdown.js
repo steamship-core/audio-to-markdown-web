@@ -12,7 +12,6 @@ const get_result = async (task_id) => {
 
 export default async function handler(req, res) {
   try {
-    console.log("BODY", req.body);
     // console.log("JSON", req.body.json());
     const task_id = req.body.task_id;
     console.log("task id", task_id);

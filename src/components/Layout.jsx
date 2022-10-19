@@ -169,7 +169,7 @@ export function Layout({ children }) {
         <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
           <span className="font-mono text-slate-500">Hosted by</span>
           <span className="mt-6 flex gap-6 font-bold text-slate-900">
-            <a target="_blank" rel="noreferrer"  href="https://www.steamship.com/team">the fun folks at Steamship</a>
+            <a target="_blank" rel="noreferrer"  href="https://www.steamship.com/team">the fine folks at Steamship</a>
           </span>
         </div>
         <div className="relative z-10 mx-auto px-4 pb-4 pt-10 sm:px-6 md:max-w-2xl md:px-4 lg:min-h-full lg:flex-auto lg:border-x lg:border-slate-200 lg:py-12 lg:px-8 xl:px-12">
@@ -242,7 +242,7 @@ export function Layout({ children }) {
             <span className="ml-2.5">Hosted by</span>
           </h2>
           <div className="mt-2 flex gap-6 text-sm font-bold leading-7 text-slate-900">
-            <a target="_blank" rel="noreferrer"  href="https://www.steamship.com/team">the fun folks at Steamship</a>
+            <a target="_blank" rel="noreferrer"  href="https://www.steamship.com/team">the fine folks at Steamship</a>
           </div>
         </div>
       </footer>

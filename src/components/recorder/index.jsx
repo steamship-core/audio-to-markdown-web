@@ -26,12 +26,6 @@ const MESSAGES = {
 const TASK_CHECK_INTERVAL_SECONDS = 0.5;
 
 export default function Recorder() {
-  // let [audio, setAudio] = useState(null);
-  // let [recording, setRecording] = useState(false);
-  // let [recorder, setRecorder] = useState(null);
-  // let [chunks, setChunks] = useState([]);
-  // let [size, setSize] = useState(0);
-
   const recordingRef = useRef(null)
   const [isRecording, setIsRecording] = useState(false)
   const [setCaptureRef, data, stream, recorder, err] = useMediaRecorder({ isRecording, audioOnly: true })
@@ -83,15 +77,16 @@ export default function Recorder() {
       return
     }
 
-    // Process the data!
-    var blob = new Blob(data, { type: 'audio/webm' });
     setState(UPLOADING)
-
     const postTranscribe = async () => {
+      var blob = new Blob(data, { type: 'audio/webm' });
+      const formData = new FormData();
+      formData.append("content", blob);
       let uploadResp = await fetch("/api/transcribe", {
         method: "POST",
-        body: blob,
-      });
+        body: formData,
+      })
+
       let resp = (await uploadResp.json());
       console.log("Got task id", resp.task_id);
       setTaskId(resp.task_id);
@@ -101,40 +96,14 @@ export default function Recorder() {
   }, [data]);
 
   const startRecording = async () => {
-  // const audio = await navigator.mediaDevices.getUserMedia({
-    //   audio: true,
-    //   video: false
-    // });
-    // setAudio(audio)
     setIsRecording(true)
     setState(RECORDING);
-    // setChunks([])
     setMarkdown(null);
     setTaskId(null);
-    // https://remarkablemark.org/blog/2021/01/02/record-microphone-audio-on-webpage/
-    // let mediaRecorder = new MediaRecorder(audio)
-    // mediaRecorder.addEventListener('dataavailable', onAudio);
-
-    // mediaRecorder.addEventListener('stop', async function () {
-    //   await processChunks();
-    // });
-    // mediaRecorder.start();
-
-    // Note: technically this is a memory leak since we don't remove the listener when they hit stop..
-    // setRecorder(mediaRecorder)
   }
 
   const stopRecording = () => {
-    // audio.getTracks().forEach(track => track.stop());
-    // setAudio(null)
     setIsRecording(false)
-
-    // recorder.stop()
-    // recorder.removeEventListener('dataavailable', onAudio)
-
-    // setRecorder(null);
-    // setChunks([])
-    // processChunks();
   }
 
   const toggleMicrophone = () => {
@@ -256,7 +225,7 @@ export default function Recorder() {
         {isRecording && (
           <React.Fragment>
             <hr className="my-12 border-gray-200" />
-            { stream && Object.keys(stream).length && (
+            { stream && (
               <AudioAnalyser audio={stream} /> 
             )}
           </React.Fragment>
