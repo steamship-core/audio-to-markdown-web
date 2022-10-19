@@ -55,9 +55,6 @@ handler.post(async(req, res) => {
     console.log(files.content.filepath)
 
     const data = await fs.readFile(files.content.filepath)
-  
-    writeFileSync("/Users/edwardbenson/steamship/audio-to-markdown-web/foo.webm", data)
-
     let uploadUrl = await uploadContent(data)
     let task_id = await startTranscribe(uploadUrl)
     console.log("task_id: ", task_id)
