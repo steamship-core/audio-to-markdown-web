@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd46d277-9e13-4849-98f2-1337d949267e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/steamship.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/steamship.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/api/get_markdown.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/get_markdown.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/transcribe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/transcribe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +42,7 @@
       <updated>1667854440538</updated>
       <workItem from="1667854441805" duration="41000" />
       <workItem from="1667854493499" duration="5526000" />
-      <workItem from="1668786577554" duration="3598000" />
+      <workItem from="1668786577554" duration="3873000" />
     </task>
     <servers />
   </component>

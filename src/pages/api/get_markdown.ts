@@ -10,7 +10,7 @@ async function get_result(task_id: string): Promise<IGetMarkdownResponse> {
   let resp = await app.invoke('get_markdown', {
     task_id: task_id,
   });
-  return resp.data as IGetMarkdownResponse
+  return (resp as any).data as IGetMarkdownResponse
 }
 
 export default async function handler(req, res) {
