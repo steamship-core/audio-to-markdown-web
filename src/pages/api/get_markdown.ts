@@ -1,7 +1,4 @@
-// Y'all, please play nice.
-
-import { v4 as uuidv4 } from 'uuid';
-import { apiPost, appPost, getApp } from '../../components/steamship'
+import { getApp } from '../../components/steamship'
 
 interface IGetMarkdownResponse {
   markdown: any,
@@ -13,7 +10,7 @@ async function get_result(task_id: string): Promise<IGetMarkdownResponse> {
   let resp = await app.invoke('get_markdown', {
     task_id: task_id,
   });
-  return resp as IGetMarkdownResponse
+  return resp.data as IGetMarkdownResponse
 }
 
 export default async function handler(req, res) {

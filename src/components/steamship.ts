@@ -1,9 +1,15 @@
 import {PackageInstance, PluginInstance, Steamship} from "@steamship/client"
 
-export function getSteamship(): Steamship {
-    return new Steamship()
+const PACKAGE = "audio-markdown"
+
+export async function getSteamship(): Promise<Steamship> {
+    const ship = new Steamship({workspace: process.env.STEAMSHIP_SPACE})
+    console.log(`Loaded Steamship client in workspace: <${(await ship.config).workspaceHandle}>`)
+    return ship
 }
 
-export function getApp(): Promise<PackageInstance> {
-    return Steamship.use(process.env.STEAMSHIP_PACKAGE, process.env.STEAMSHIP_SPACE)
+export async function getApp(): Promise<PackageInstance> {
+    const pkg = await Steamship.use(PACKAGE, process.env.STEAMSHIP_SPACE, undefined, undefined, true)
+    console.log(`Loaded Steamship package in workspace: <${(await pkg.client.config).workspaceHandle}> with handle: <${pkg.handle}>`)
+    return pkg;
 }
