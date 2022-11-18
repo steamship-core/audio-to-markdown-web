@@ -10,6 +10,7 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
+    "@steamship/client": "^2.2.5",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.7",
     "autoprefixer": "^10.4.12",
@@ -29,9 +30,12 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.5",
     "prettier": "^2.7.0",
-    "prettier-plugin-tailwindcss": "^0.1.13"
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "typescript": "4.9.3"
   }
 }

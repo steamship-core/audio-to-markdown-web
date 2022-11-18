@@ -1,21 +1,21 @@
 // Y'all, please play nice.
 
 import { v4 as uuidv4 } from 'uuid';
-import { apiPost, appPost } from '../../components/steamship'
+import {getSteamship} from '../../components/steamship'
 import { writeFileSync } from "fs"
 import { promises as fs } from 'fs'
 import middleware from '../../middleware/middleware'
 import nextConnect from 'next-connect';
 
-
 const uploadContent = async (content) => {
   const filePath = `${uuidv4()}.webm`;
+  const ship = getSteamship()
 
-  let writeResp = await apiPost('space/createSignedUrl', {
+  let writeResp = await ship.post('workspace/createSignedUrl', {
     bucket: 'userData',
     filepath: filePath,
     operation: 'Write'
-  }) 
+  }) as any
 
   let uploadResp = await fetch(writeResp.data.signedUrl, {
     method: "PUT",
@@ -23,15 +23,14 @@ const uploadContent = async (content) => {
    }
   );
 
-  let readResp = await apiPost('space/createSignedUrl', {
+  let readResp = await ship.post('workspace/createSignedUrl', {
     bucket: 'userData',
     filepath: filePath,
     operation: 'Read'
-  }) 
+  }) as any
 
   console.log(readResp.data.signedUrl)
   return readResp.data.signedUrl;
-  // return "https://api.webm.to/static/downloads/c0b449c32c9e4b4f9444167dcc1bcd1d/markdown_test_4.webm";
 }
 
 const startTranscribe = async (url) => {
@@ -44,15 +43,10 @@ const startTranscribe = async (url) => {
 
 const handler = nextConnect();
 handler.use(middleware);
-handler.post(async(req, res) => {
+handler.post(async(req: any, res: any) => {
   try {
-    // const body = await buffer(req);
-    
 		const files = req.files
 		const body = req.body
-
-    // read file from the temporary path
-    console.log(files.content.filepath)
 
     const data = await fs.readFile(files.content.filepath)
     let uploadUrl = await uploadContent(data)
